@@ -159,34 +159,50 @@ class Students {
 
 class Page {
 	constructor () {
-		this.start_page =  `<div class="row margin-top-15">
-								<div class="col-2"></div>
-								<div class="col-8">
-									<div class="jumbotron">
-										<h1 class="center">Students Distribution</h1>      
-										<p style="text-align: center">
-											Upload the excel sheet containing the students, their marks and their wish list.
-										</p>
-										<input class="inputfile" type="file" name="file" id="file">
-										<label class="inputlabel center" for="file">Choose an excel file</label>
+		this.main_page = `<div class="row margin-top-15">
+							<div class="col-1"></div>
+							<div class="col-4">
+								<button id="start_page" type="button" style="border-radius: 30px;background-color: #636EC2; border-color: #636EC2; font-size: 3rem; width: inherit; min-height: 18vh;" class="btn btn-primary">DEPARTMENT</button>
+							</div>
+							<div class="col-2"></div>
+							<div class="col-4">
+								<button type="button" style="border-radius: 30px; background-color: #636EC2; border-color: #636EC2; font-size: 3rem; width: inherit; min-height: 18vh;" class="btn btn-primary">RESULTS</button>
+							</div>
+							<div class="col-1"></div>
+						</div>`;
+		this.start_page =  `<div class="row" style="margin-top: 5vh;">
+								<div class="col-3">
+									<div class="container">
+									<div class="row">
+										<div class="col-12">
+											<label id="distribute" class="distribute" style="border-radius: 0px 15px 15px 0px; margin-top: 18vh; font-size: 2.5rem;">Distribute</label>
+										</div>
+									</div>
+									<div class="row" style="margin-top: 5vh;">
+										<div class="col-12">
+											<label class="help" style="border-radius: 0px 15px 15px 0px; font-size: 2.5rem;">Help</label>
+										</div>
+									</div>
 									</div>
 								</div>
-								<div class="col-2"></div>
-							</div>`;
-		this.departments_limits = ` <div class="row margin-top-15">
-										<div class="col-2"></div>
-										<div class="col-8">
-											<div class="jumbotron">
-												<h1 class="center" style="margin-bottom: 2vh;">Students Distribution</h1>      
-												<div class="list-group" style="text-align: right;">
-													__DEPARTMENTS__
-												</div>
-												<label class="inputlabel center" for="file" style="margin-top: 3vh; font-size: 1.5rem;" id="file">Distribute</label>
-											</div>
+								<div class="col-9">
+									<div class="conatiner" style="margin-right:1vw;>
+									<div class="row">
+										<div class="col-12">
+											<input class="inputfile" type="file" name="file" id="file">
+											<label class="inputlabel center" style="border-radius:25px; font-size: 3rem;" for="file"><img src='images/add.png' style='height: 45px;' />&nbsp;&nbsp;Upload excel file</label>
+											<div id="departments_list" style="border-radius:25px; min-height:40vh; background-color: #F1F2FA; margin-top: 2vh; color: #747EC8; font-size: 3.5rem; padding: 20px;"><div style="margin:auto; width: fit-content; padding-top: 10vh;">Empty</div></div>
 										</div>
-										<div class="col-2"></div>
+									</div>
+									</div>
+								</div>
+							</div>`;
+		this.departments_limits = ` <div class="row" style="font-size: 1.2rem;" style="margin-right: -17px;">
+										<div class="col-12">
+											__DEPARTMENTS__
+										</div>
 									</div>`
-		this.table = `  <table class="table table-dark table-hover">
+		this.table = `  <table class="table table-dark table-hover" style="margin-left: 15px; margin-botttom: 15vh;">
 							<thead>
 								<tr>
 									__HEADERS__
@@ -198,22 +214,35 @@ class Page {
 						</table>`
 	}
 
+	dispaly_main_page () {
+		document.getElementById("header_image").innerHTML = "<img src='images/main_header.png' style='width: 100vw;' />";
+		document.getElementsByClassName("conatiner")[0].innerHTML = this.main_page;
+	}
+
 	dispaly_start_page () {
+		document.getElementById("header_image").innerHTML = "<img src='images/start_header.png' style='width: 100vw;' />";
 		document.getElementsByClassName("conatiner")[0].innerHTML = this.start_page;
+		document.getElementById('file').addEventListener("change", (event) => {
+			my_file.handle_file(event.target.files[0]);
+		});
 	}
 
 	dispaly_departments_limits (departments) {
 		let departments_length = departments.length;
 		let html_flavors_list = ["primary", "success", "danger", "warning", "info"];
-		let html_department = `  <div class="list-group-item list-group-item-action list-group-item-__FLAVOR__ disable-hover-pointer">
-									<input type="number"  id="__DEPARTMENT___limited_value" name="__DEPARTMENT___limit_value" disabled>&nbsp;&nbsp;&nbsp;
-									<label for="__DEPARTMENT___limited">Limited</label>&nbsp;&nbsp;
-									<input type="radio"  class="department_limited" id="__DEPARTMENT___limited" name="__DEPARTMENT___limitation" value="__DEPARTMENT___limited">
-									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-									<label for="__DEPARTMENT___unlimited">Unlimited</label>&nbsp;&nbsp;
-									<input type="radio" class="department_unlimited" name="__DEPARTMENT___limitation"  id="__DEPARTMENT___unlimited" value="__DEPARTMENT___unlimited" checked>
-									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-									__DEPARTMENT__
+		let html_department = `  <div style="margin: 10px; border: 2px solid #636EC2; border-radius: 10px; padding: 7px; background-color: white; color: #1B5872; text-align: right;" class="row">
+									<input type="number"  id="__DEPARTMENT___limited_value" class="col-3" name="__DEPARTMENT___limit_value" style="border-width: 0px; background-color: #F1F2FA;" disabled>
+									<label for="__DEPARTMENT___limited"  class="col-2">
+										Limited 
+										<input type="radio"  class="department_limited" id="__DEPARTMENT___limited" name="__DEPARTMENT___limitation" value="__DEPARTMENT___limited">
+									</label>
+									<label for="__DEPARTMENT___unlimited"  class="col-2">
+										Unlimited
+										<input type="radio" class="department_unlimited" name="__DEPARTMENT___limitation"  id="__DEPARTMENT___unlimited" value="__DEPARTMENT___unlimited" checked>
+									</label>
+									<p class="col-5">
+										__DEPARTMENT__
+									</p>
 								</div>`;
 		let html_departments = "";
 		let user_options_ids = [];
@@ -228,7 +257,7 @@ class Page {
 		}
 		this.departments_limits = this.departments_limits.replace("__DEPARTMENTS__", html_departments);
 	
-		document.getElementsByClassName("conatiner")[0].innerHTML = this.departments_limits;
+		document.getElementById("departments_list").innerHTML = this.departments_limits;
 
 		for (let i = 0; i < departments_length; i = i +1) {
 			document.getElementsByClassName('department_limited')[i].addEventListener("change", (event) => {
@@ -240,7 +269,7 @@ class Page {
 			});
 		}
 
-		document.getElementById('file').addEventListener("click", (event) => {
+		document.getElementById('distribute').addEventListener("click", (event) => {
 			my_file.distribute(user_options_ids);
 		});
 	}
@@ -285,7 +314,7 @@ class Page {
 			html_table_header = "";
 			html_table_rows = "";
 
-			document.getElementById("content_area").insertAdjacentHTML("beforeend", "<h3 style='text-align: center; margin-top: 3vh;'>" + user_options[j]["department"] + "</h3>");
+			document.getElementById("content_area").insertAdjacentHTML("beforeend", "<label class='inputlabel center' style='border-radius:25px; font-size: 2rem; cursor: auto; margin: 0px 50px;'><img src='images/excel.png' style='height: 45px;  cursor: pointer;' title='export excel' />&nbsp;&nbsp;" + user_options[j]["department"] + "</label>");
 
 			for (let i = 0; i < table_rows.length; i = i + table_header.length+2) {
 				row = table_rows.slice(i, i+table_header.length+2);
@@ -335,10 +364,10 @@ let my_page = new Page();
 
 document.addEventListener("DOMContentLoaded", () => {
 
-	my_page.dispaly_start_page();
+	my_page.dispaly_main_page();
 
-	document.getElementById('file').addEventListener("change", (event) => {
-		my_file.handle_file(file = event.target.files[0]);
+	document.getElementById('start_page').addEventListener("click", (event) => {
+		my_page.dispaly_start_page();
 	});
 	
 });

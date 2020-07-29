@@ -18,22 +18,26 @@
 }
 
 .inputlabel {
-    background-color: white; /* Green */
-    color: black;
-    border: 3px solid #4CAF50;
+    background-color: #F1F2FA; 
+    color: #1B5872;
     padding: 16px 32px;
     text-align: center;
     text-decoration: none;
     font-size: 25px;
     transition-duration: 0.4s;
     cursor: pointer;
-}
-
-.inputlabel:hover {
-    background-color: #4CAF50;
-    color: white;
+    width: inherit;
 }
 
 .disable-hover-pointer:hover {
     cursor: auto;
+}
+
+.distribute, .help {
+    background-color: #636EC2;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    cursor: pointer;
+    width: 270px;
 }
