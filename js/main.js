@@ -1,3 +1,4 @@
+
 // Defining classes /////////////////////////////////////////////////////////////////////////////////////////////
 
 class File {
@@ -26,20 +27,36 @@ class File {
 		};
 	}
 
+	export_excel (department_students, department_name) {
+		let department_students_length = department_students.length;
+		let excel_data = [];
+		for (let i = 0; i < department_students_length; i++) {
+			excel_data.push(Object.values(department_students[i]));
+			for (let j = 0; j < department_students[i].length; j++) {
+				console.log(department_students[i]["wishes"]);
+			}
+		}
+		var myTestXML = new myExcelXML(JSON.stringify(excel_data), this.headers);
+		myTestXML.downLoad(department_name);
+		console.log(this.headers);
+	}
+
 	create_students_objects () {
 		let rows_length = this.rows.length;
 		let row = null;
+		my_students = new Students()
 		for (let i = 0; i < rows_length; i = i +1) {
 			row = this.rows[i];
 			let student_wishes = this.create_student_wishes(row);
 			my_students.add_student(row["الكود"], row["الاسم"], student_wishes, row["حالة النجاح"], row["المجموع"]);
 		}
-		my_page.dispaly_departments_limits(this.headers.slice(3, 7));
+		my_page.dispaly_departments_limits(this.headers.slice(3, Object.keys(row).length-2));
 	}
 
 	create_student_wishes (row) {
 		let wishes = {};
-		for (let i = 3; i < 7; i = i +1) {
+		let row_length = Object.keys(row).length;
+		for (let i = 3; i < row_length-1; i = i +1) {
 			wishes[this.headers[i]] = row[this.headers[i]];
 		}
 		return wishes;
@@ -134,6 +151,8 @@ class Students {
 	constructor ()
 	{
 		this.students_list = [];
+		this.header = [];
+		this.departments = [];
 	}
 
 	add_student (id, name, wish_list, status, marks) {
@@ -255,9 +274,10 @@ class Page {
 			html_departments += html_department.replace(/__DEPARTMENT__/g, departments[i]);
 			html_departments = html_departments.replace("__FLAVOR__", html_flavors_list[i%5]);
 		}
-		this.departments_limits = this.departments_limits.replace("__DEPARTMENTS__", html_departments);
+		let departments_limits = this.departments_limits.replace("__DEPARTMENTS__", html_departments);
 	
-		document.getElementById("departments_list").innerHTML = this.departments_limits;
+		document.getElementById("departments_list").innerHTML = departments_limits;
+
 
 		for (let i = 0; i < departments_length; i = i +1) {
 			document.getElementsByClassName('department_limited')[i].addEventListener("change", (event) => {
@@ -289,11 +309,26 @@ class Page {
 			if (student_keys[i] == "wishes") {
 				for (let k = 0; k < user_options.length; k = k +1) {
 					table_header.push(user_options[k]["department"]);
+					my_students.header.push(user_options[k]["department"]);
+					my_students.departments.push(user_options[k]["department"]);
 				}
 				continue;
 			}
-			table_header.push(student_keys[i]);
+			table_header.push("");
+			my_students.header.push("");
+
 		}
+		let last_index  = student_keys.length + user_options.length-2
+		table_header[0] = "الكود";
+		my_students.header[0] = "الكود";
+		table_header[1] = "الاسم";
+		my_students.header[1] = "الاسم";
+		table_header[last_index-2] = "حالة النجاح";
+		my_students.header[last_index-2] = "حالة النجاح";
+		table_header[last_index-1] = "المجموع";
+		my_students.header[last_index-1] = "المجموع";
+		table_header[last_index] = "القسم";
+		my_students.header[last_index] = "القسم";
 
 		for (let i = 0; i < my_students_length; i = i +1) {
 			table_rows.push("<tr>");
@@ -314,7 +349,7 @@ class Page {
 			html_table_header = "";
 			html_table_rows = "";
 
-			document.getElementById("content_area").insertAdjacentHTML("beforeend", "<label class='inputlabel center' style='border-radius:25px; font-size: 2rem; cursor: auto; margin: 0px 50px;'><img src='images/excel.png' style='height: 45px;  cursor: pointer;' title='export excel' />&nbsp;&nbsp;" + user_options[j]["department"] + "</label>");
+			document.getElementById("content_area").insertAdjacentHTML("beforeend", "<label class='inputlabel center' style='border-radius:25px; font-size: 2rem; cursor: auto; margin: 0px 50px;'><img src='images/excel.png' style='height: 45px;  cursor: pointer;' title='export excel' class='department_image' id='" + user_options[j]["department"] + "' />&nbsp;&nbsp;" + user_options[j]["department"] + "</label>");
 
 			for (let i = 0; i < table_rows.length; i = i + table_header.length+2) {
 				row = table_rows.slice(i, i+table_header.length+2);
@@ -337,6 +372,18 @@ class Page {
 
 
 			document.getElementById("content_area").insertAdjacentHTML("beforeend", filled_html_table);
+		}
+
+		let department_images_length = document.getElementsByClassName('department_image').length;
+		for (let i = 0; i < department_images_length; i++) {
+			document.getElementsByClassName('department_image')[i].addEventListener("click", (event) => {
+				let department_name = document.getElementsByClassName('department_image')[i].id;
+				let department_students = [];
+				for (let i = 0; i < my_students.length(); i++) {
+					if (my_students.get_student(i).department == department_name) department_students.push(my_students.get_student(i));
+				}
+				my_file.export_excel(department_students, department_name);
+			});
 		}
 	}
 
@@ -365,6 +412,7 @@ let my_page = new Page();
 document.addEventListener("DOMContentLoaded", () => {
 
 	my_page.dispaly_main_page();
+	// my_page.dispaly_start_page();
 
 	document.getElementById('start_page').addEventListener("click", (event) => {
 		my_page.dispaly_start_page();
