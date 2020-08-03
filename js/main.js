@@ -181,11 +181,11 @@ class Page {
 		this.main_page = `<div class="row margin-top-15">
 							<div class="col-1"></div>
 							<div class="col-4">
-								<button id="start_page" type="button" style="border-radius: 30px;background-color: #636EC2; border-color: #636EC2; font-size: 3rem; width: inherit; min-height: 18vh;" class="btn btn-primary">DEPARTMENT</button>
+									<button id="start_page" type="button" style="border-radius: 30px;background-color: #636EC2; border-color: #636EC2; font-size: 3rem; width: inherit; min-height: 18vh;" class="btn btn-primary">DEPARTMENT</button>
 							</div>
 							<div class="col-2"></div>
 							<div class="col-4">
-								<button type="button" style="border-radius: 30px; background-color: #636EC2; border-color: #636EC2; font-size: 3rem; width: inherit; min-height: 18vh;" class="btn btn-primary">RESULTS</button>
+								<button type="button" style="border-radius: 30px; background-color: #636EC2; border-color: #636EC2; font-size: 3rem; width: inherit; min-height: 18vh;" class="btn btn-primary"><a id="special_a" href="help.html" target="_blank" style="display:block">RESULTS</a></button>
 							</div>
 							<div class="col-1"></div>
 						</div>`;
