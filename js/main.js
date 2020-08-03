@@ -181,7 +181,7 @@ class Page {
 		this.main_page = `<div class="row margin-top-15">
 							<div class="col-1"></div>
 							<div class="col-4">
-								<button id="start_page" type="button" style="border-radius: 30px;background-color: #636EC2; border-color: #636EC2; font-size: 3rem; width: inherit; min-height: 18vh;" class="btn btn-primary">DEPARTMENT</button>
+									<button id="start_page" type="button" style="border-radius: 30px;background-color: #636EC2; border-color: #636EC2; font-size: 3rem; width: inherit; min-height: 18vh;" class="btn btn-primary">DEPARTMENT</button>
 							</div>
 							<div class="col-2"></div>
 							<div class="col-4">
@@ -199,7 +199,7 @@ class Page {
 									</div>
 									<div class="row" style="margin-top: 5vh;">
 										<div class="col-12">
-											<label class="help" style="border-radius: 0px 15px 15px 0px; font-size: 2.5rem;">Help</label>
+											<label class="help" style="border-radius: 0px 15px 15px 0px; font-size: 2.5rem;"><a id="special_a" href="help.html" target="_blank" style="display:block">Help</a></label>
 										</div>
 									</div>
 									</div>

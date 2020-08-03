@@ -41,3 +41,11 @@
     cursor: pointer;
     width: 270px;
 }
+
+#special_a {
+    color: white;
+}
+
+#special_a:hover {
+    text-decoration: none;
+}
