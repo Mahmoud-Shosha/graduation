@@ -1,0 +1,112 @@
+*{
+    font-size: 20px;
+    
+}
+
+header{
+    width: 100%;
+}
+
+header img{
+    width: 100%;
+}
+
+.buttons-container{
+    width: 100%;
+}
+
+.btn{
+    width: 31%;
+    border-radius: 10px;
+    height: 40px;
+    color: white;
+    margin: 5px 10px;
+    font-style: italic;
+    cursor: pointer;
+}
+.green{
+    background-color: #1C4F66;
+    
+}
+.blue{
+    background-color: #2A83BD;
+}
+
+
+section{
+    width: 80%;
+    margin: 30px auto;
+    text-align: center;
+    background-color: #F1F2FA;
+    border-radius: 10px;
+    padding-bottom: 20px;
+}
+
+h1{
+    background-color: #205872;
+    color: white;
+    padding: 10px;
+    display: inline-block;
+    border-radius: 10px;
+    border-radius: 10px;
+    
+}
+
+label{
+    display: block; 
+    color: white;
+    margin-bottom: 10px;
+}
+.input-data{
+    background-color: #626EC2;
+    margin: 15px;
+    border-radius: 10px;
+    padding-bottom: 10px;
+}
+
+input, select{
+    border-radius: 10px;
+    width: 40%;
+    text-align: center;
+    text-indent: 155px;
+    
+}
+.transfer{
+    border: 2px solid #CCCFEB;
+    width: 90%;
+    margin: 50px auto 20px auto;
+    border-radius: 10px;
+    height: 40px;
+    
+    
+}
+.transfer p{
+    display: inline-block;
+    margin: 10px 0 1px 0;
+    color: #164864;
+    font-style: italic;    
+}
+.transfer span {
+    color: #164864;
+    font-style: italic;
+}
+.right, .left{
+    font-size: 200%;
+    display: inline-block;
+    color: #164864;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+.left{
+    float: right;
+    margin-right: 200px;
+}
+
+
+.right{
+    float: left;
+    margin-left: 200px;   
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
+}

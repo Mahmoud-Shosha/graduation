@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="css/style2.css">
+        <link rel='icon' href="images/favicon.ico" type='image/x-icon'/ >
+        <title>Students Results</title>
+        <style>
+            #results_link {
+                color: white;
+                text-decoration: none;
+            }
+
+            #results_link:hover {
+                text-decoration: none;
+            }
+        </style>
+
+    </head>
+    <body>
+        <header>
+            <img src="images/result_header.png">
+            <div class="buttons-container">
+                <a id="results_link" target="_blank" href="help2.html"><button class="green btn">Help</button> </a>
+                <button class="green btn">Mercy Roles</button> 
+                <button class="blue btn">Add new year</button> 
+            </div>
+        </header>
+        
+        <section>
+            <h1>برجاء ادخال البينات التاليه</h1>
+            <div class="input-data">
+                <label for="yearName">اسم السنه الدراسيه</label>
+                <input type="text" id="yearName">
+            </div>
+            <div class="input-data">
+                <label for="yearDegrees">درجات السنه الكليه</label>
+                <input type="number" id="yearDegrees">
+            </div>
+            <div class="input-data">
+                <label for="yearSubNum">عدد مقررات السنه الدراسيه</label>
+                <input type="number" id="yearSubNum">
+            </div>
+        </section>
+        <section>
+                <h1>بينات مقررات السنه الدراسيه</h1>
+                <div class="input-data">
+                    <label for="subName">اسم الماده</label>
+                    <input type="text" id="subName">
+                </div>
+                <div class="input-data">
+                    <label for="total">الدرجه الكليه للمقرر</label>
+                    <input type="number" id="total">
+                </div>
+                <div class="input-data">
+                    <label for="classDegrees">درجات اعمال الفصل</label>
+                    <input type="number" id="classDegrees">
+                </div>
+                <div class="input-data">
+                    <label for="final">درجه الامتحان التحريرى</label>
+                    <input type="number" id="final">
+                </div>
+                <div class="input-data">
+                    <label for="practical">درجه الامتحان العملى</label>
+                    <input type="number" id="practical">
+                </div>
+                 <div class="input-data">
+                    <label for="type">نوع الماده</label>
+                    <select name="type" id="type">
+<!--                        <option disabled selected>choose from below</option>-->
+                      <option value="cont">مستمره</option>
+                      <option value="final">منتهيه</option>
+                    </select>
+                </div>
+                 <div class="input-data">
+                    <label for="status">حاله الماده</label>
+                    <select name="status" id="status">
+<!--                        <option disabled selected>choose from below</option>-->
+                      <option value="cont">مستمره</option>
+                      <option value="final">منتهيه</option>
+                    </select>
+                </div>
+                <div class="transfer">
+                    <ion-icon name="play" class="right"></ion-icon>
+                    <p><span class="from">1</span>:<span class="to">10</span></p>
+                    <ion-icon name="play" class="left"></ion-icon>
+                </div>
+                <button class="blue btn">save file</button>
+        </section>
+        
+        <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
+    </body>
+</html>
+
+
+

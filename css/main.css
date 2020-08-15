@@ -1,3 +1,6 @@
+/* * {
+    overflow: hidden;
+} */
 .margin-top-15 {
     margin-top: 15vh;
 }
@@ -47,5 +50,13 @@
 }
 
 #special_a:hover {
+    text-decoration: none;
+}
+
+#results_link {
+    color: white;
+}
+
+#results_link:hover {
     text-decoration: none;
 }

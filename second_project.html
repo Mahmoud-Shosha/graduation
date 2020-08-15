@@ -1,0 +1,85 @@
+<html>
+<link rel='icon' href="images/favicon.ico" type='image/x-icon'/ >
+<title>Students Results</title>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<script src="lib/jexcel.js"></script>
+<link rel="stylesheet" href="lib/jexcel.css" type="text/css" />
+<script src="lib/jsuites.js"></script>
+<link rel="stylesheet" href="lib/jsuites.css" type="text/css" />
+<script src="lib/jquery.js"></script>
+<script src="lib/jszip.js"></script>
+<script src="lib/xlxs.js"></script>
+<script src="jexcel.js"></script>
+<script src="lib/FileSaver.js"></script>
+<script src="lib/tableexport.js"></script>
+<input type="file" id="fileInput" multiple onchange="getExcel()" /> <br>
+
+أختر السنة الدراسيه<select id="files">
+    <option value="elec1.json" selected="selected">أولى كهربا</option>
+
+  </select> <br>
+ النسبة الثابته للمواد : <input type="number" id="fixedPresentagevalue" value="2"> % <br>
+ النسبة الثابته للمجوع الكلي : <input type="number" id="fixedPresentagevalueForTotal" value="1"> % <br>
+
+ نسبة الرأفة من الدرجات الكليه للطالب المستجد : <input type="number" id="totalMercyPresentageForNew" value="2"> % <br>
+ نسبة الرأفة من الدرجات الكليه للطالب الباق : <input type="number" id="totalMercyPresentageForOld" value="2"> % <br>
+ نسبة الرأفة من الدرجات الكليه للطالب من الخارج 1 : <input type="number" id="totalMercyPresentageForOut" value="2"> % <br>
+ نسبة الرأفة من الدرجات الكليه للطالب المعرض للفصل : <input type="number" id="totalMercyPresentageForDis" value="2"> % <br>
+
+
+ نسبة الرأفة للمادة للطالب المستجد : <input type="number" id="mercyPresentageForSubjectForNew" value="8"> % <br>
+ نسبة الرأفة للمادة للطالب الباق : <input type="number" id="mercyPresentageForSubjectForOld" value="8"> % <br>
+ نسبة الرأفة للمادة للطالب من الخارج 1 : <input type="number" id="mercyPresentageForSubjectForOut" value="8"> % <br>
+ نسبة الرأفة للمادة للطالب المعرض للفصل : <input type="number" id="mercyPresentageForSubjectForDis" value="8"> % <br>
+ عدد المواد الاساسيه التي يمكن للطالب الرسوب بها : <input type="number" id="subjectsCanFail" value="2">  <br>
+ عدد المواد الانسانية التي يمكن للطالب الرسوب بها : <input type="number" id="subjectsCanFailH" value="2">  <br>
+
+ اولوية الرأفة في حالة التساوي <br>
+  المواد الانسانيه<input type="number" id="periority1" value="1"> <br>
+  المواد خارج التخصص<input type="number" id="periority2" value="2"> <br>
+  المواد داخل التخصص<input type="number" id="periority3" value="3"><br>
+
+
+<button id="calc">Fill the sheet </button>
+<button id = "fixedPresentageBtn">Apply fixed presentage</button>
+<button id = "mercyBtn">Apply Mercy</button>
+
+<button onclick="exportTableToCSV('mySheet.csv')">Download</button>
+<div id="spreadsheet" dir="rtl"></div>
+
+
+<script>
+
+
+    function getExcel() {
+        var name = document.getElementById('fileInput');
+         var excelFileName = name.files.item(0).name;
+
+        // take the url of the file
+        jexcel.fromSpreadsheet("files/"+excelFileName, function (result) {
+            if (!result.length) {
+                console.error('JEXCEL: Something went wrong.');
+            } else {
+                if (result.length == 1) {
+                    jexcel(document.getElementById('spreadsheet'), result[0]);
+                } else {
+                    jexcel.createTabs(document.getElementById('spreadsheet'), result);
+                }
+            }
+
+        });
+
+
+
+    };
+
+
+
+
+
+
+</script>
+
+</html>
+
+-->
