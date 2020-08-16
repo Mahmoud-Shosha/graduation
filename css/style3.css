@@ -1,0 +1,135 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+}
+.row{
+    margin: 50px 10%;
+    width: 80%;
+    display:inline-block;
+}
+header{
+    width: 100%;
+}
+header img{
+    width: 100%;
+}
+
+.btn {
+    height: 30px;
+    width: 30%;
+    margin: 2px 10px;
+    color: white;
+    border-radius: 10px;
+    padding: 10px;
+    height: 40px;
+    vertical-align: middle;
+    cursor: pointer;
+    font-style: italic;
+
+}
+.g1{
+    float: left;
+}
+.g2{
+    float: right;
+}
+.green{
+    background-color: #1A556F;
+}
+.blue{
+    background-color: #3792D7;
+    margin:  0 3%;
+}
+.input-field{
+    background-color: #e3e3e3;
+    border-radius: 10px;
+    display:inline-block;
+    padding: 10px;
+}
+.input-field ion-icon{
+    font-size: 250%;
+    color: #1A556F;
+    margin-top: 7px;
+}
+input[type="file"]{
+    display: none;
+}
+
+.input-field label{
+    font-size: 250%;
+    margin: 0 200px 0 0;
+    font-style: italic;
+    color: #7389AB;
+    float: right;
+    cursor: pointer;
+    transition: color .2s;
+}
+.input-field label:hover{
+    color: #1A556F;
+}
+
+h1{
+    background-color: #1B5872;
+    color: white;
+    font-size: 120%;
+    padding: 10px;
+    margin: 30px auto;
+    text-align: center;
+    border-radius: 10px;
+    width: 20%;
+}
+.determines{
+    text-align: center;
+}
+.inputDiv1, .inputDiv2{
+    background-color: #636EC2;
+    width: 100%;
+    border-radius: 10px;
+    padding: 11px;
+    margin-bottom: 30px;
+}
+.inputDiv1 label, .tinyInput label{
+    display: block;
+    margin-bottom: 10px;
+    color: white;
+}
+.inputDiv1 input, select{
+    width: 40%;
+    border-radius: 10px;
+    text-align: center;
+}
+.inputDiv2{
+    background-color: #e3e3e3;
+}
+.inputDiv2 p{
+    float: right;
+    margin-top: 25px;
+}
+ .tinyInput{
+     display: inline-block;
+     background-color: #154764;
+     border-radius: 10px;
+     padding: 5px;
+     width: 13%;
+     margin: 0 20px;
+}
+ .tinyInput input{
+    width: 80%;
+    border-radius: 10px;
+    text-align: center;
+
+ }
+
+.nav-bar{
+    border:3px solid #3794D7;
+    padding: 10px;
+    width: 95%;
+    margin: 50px auto;
+    border-radius: 10px;
+}
+ .nav-bar .btn{
+     width: 17%;
+     margin-right: 1%;
+
+ }
