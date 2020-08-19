@@ -356,7 +356,7 @@ function fillStudentFixedPresentage(tr, student, fixedPresentageValue) {
         else if (!subject.isContinued && !subject.isFromPastYear) {
             (subject.havePracticalExam) ? i = i + 3 : i = i + 2;
 
-            if (subject.studentMark == "رل") i = i + 2;
+            if (subject.studentGrade == "رل") i = i + 2;
             else if (isNeedFixedPresentage(subject.fullMark, subject.studentMark, fixedPresentageValue)) {
 
                 subject.studentMark = subject.fullMark * 0.5;
